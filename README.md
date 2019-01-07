@@ -1,7 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A rails application for [TheOdinProject](https://www.theodinproject.com/lessons/associations) designed to mimic the functionality of an event planning site like [EventBrite](https://www.eventbrite.com/).
+
 
 Things you may want to cover:
 
