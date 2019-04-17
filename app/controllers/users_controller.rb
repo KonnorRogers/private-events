@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include UsersHelper
+
   def new
     @user = User.new
   end
@@ -14,7 +16,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    if logged_in?
+      @user = User.find(params[:id])
+    else
+      redirect_to login_path
+    end
   end
 
   private

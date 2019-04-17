@@ -1,2 +1,12 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<h1>Login to your account</h1><br>
+
+<%= form_for(:session, url: login_path) do |f| %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+
+  <%= f.submit "Login" %>
+<% end %>
+
+<br>
+
+<p> New user? <%= link_to "Sign up here!", signup_path %> </p>
