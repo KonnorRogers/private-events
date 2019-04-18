@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by_name(params[:session][:name])
+    @user = User.find_by_name(params[:name])
     if @user
       login(@user)
       redirect_to @user, notice: "Logged in!"

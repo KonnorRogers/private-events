@@ -16,8 +16,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
-    redirect_to(root_url) unless @user
+    @user = User.find(params[:id])
+    redirect_to(login_path) unless logged_in?
   end
 
   private
