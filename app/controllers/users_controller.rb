@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  include UsersHelper
-
   def new
     @user = User.new
   end
@@ -11,16 +9,14 @@ class UsersController < ApplicationController
       flash[:success] = 'User successfully created'
       redirect_to @user
     else
+      flash.now[:danger] = 'Unable to create user'
       render 'new'
     end
   end
 
   def show
-    if logged_in?
-      @user = User.find(params[:id])
-    else
-      redirect_to login_path
-    end
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless @user == current_user
   end
 
   private

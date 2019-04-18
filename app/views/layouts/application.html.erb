@@ -10,6 +10,28 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if current_user %>
+      <p> Logged in as: <%= current_user.name %> </p>
+    <% end %>
+
+    <div class="container">    
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
+
+      <%= yield %> 
+
+      <% if logged_in? %>
+        <%# <% @user = current_user %1> %>
+        <br><%= link_to "View your profile", @current_user %><br><br>
+      <% else %>
+        <br><%= link_to "Already a user? Login here", login_path %><br><br>
+        <br><%= link_to "New user? Sign up here!", signup_path %><br><br>
+      <% end %>
+
+      <%= link_to "Home page", root_url %>
+
+      <%= debug(params) if Rails.env.development? %>
+    </div>
   </body>
 </html>
