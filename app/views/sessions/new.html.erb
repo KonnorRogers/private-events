@@ -1,6 +1,6 @@
 <h1>Login to your account</h1><br>
 
-<%# DOES NOT WORK, cant figure out why %>
+<%# WORKS but requires adjustment to params %>
 <%# <%= form_for(:session, url: login_path) do |f| %1> %>
 <%#   <%= f.label :name %1><br> %>
 <%#   <%= f.text_field :name %1><br> %>
@@ -20,7 +20,7 @@
 <%# <% end %1> %>
 <%# <br> %>
 
-<%# Best practice going forward: %>
+<%# <1%# Best practice going forward: %1> %>
 <%= form_with(url: login_path) do |form| %>
   <%= form.label :name %><br>
   <%= form.text_field :name %><br>

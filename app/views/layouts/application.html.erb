@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <% if current_user %>
+    <% if logged_in? %>
       <p> Logged in as: <%= current_user.name %> </p>
     <% end %>
 
@@ -22,14 +22,14 @@
       <%= yield %> 
 
       <% if logged_in? %>
-        <%# <% @user = current_user %1> %>
         <br><%= link_to "View your profile", @current_user %><br><br>
+        <br><%= link_to "Logout", logout %><br>
       <% else %>
         <br><%= link_to "Already a user? Login here", login_path %><br><br>
         <br><%= link_to "New user? Sign up here!", signup_path %><br><br>
       <% end %>
 
-      <%= link_to "Home page", root_url %>
+      <br><%= link_to "Home page", root_url %>
 
       <%= debug(params) if Rails.env.development? %>
     </div>
