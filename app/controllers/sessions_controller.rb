@@ -3,8 +3,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # if using my form_for
-    # @user = User.find_by_name(params[:session][:name])
     @user = User.find_by_name(params[:name])
     if @user
       login(@user)
