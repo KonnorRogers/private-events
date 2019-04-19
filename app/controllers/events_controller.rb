@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+  def new
+  end
+
   def create
     current_user.events.build(events_params)
   end
@@ -12,6 +15,6 @@ class EventsController < ApplicationController
   private
 
   def events_params
-    params.require(:event)
+    params.require(:event).permit(:name, :location)
   end
 end
