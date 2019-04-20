@@ -1,0 +1,9 @@
+<%= form_with(model: @event) do |f| %>
+  <%= f.label :day %><br>
+  <%= f.date_field :day %><br>
+
+  <%= f.label :location %><br>
+  <%= f.text_field :location %><br>
+
+  <br><%= f.submit "Create event!" %><br>
+<% end %>

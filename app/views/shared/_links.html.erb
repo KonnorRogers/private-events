@@ -2,6 +2,10 @@
   <% unless current_page?(current_user) %>
     <p><%= link_to "Your profile", current_user %></p>
   <% end %>
+
+  <% unless current_page?(events_new_path) %>
+    <%= link_to "Create a new event", events_new_path %>
+  <% end %>
   <p><%= link_to "Logout", logout_path, method: :delete %></p>
 <% else %>
     <% unless current_page?(login_path) %>
