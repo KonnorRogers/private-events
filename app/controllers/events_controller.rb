@@ -1,10 +1,6 @@
 class EventsController < ApplicationController
   before_action :logged_in_user?, only: %i[create show index]
 
-  def new
-    @event = Event.new
-  end
-
   def create
     @event = current_user.events.build(event_params)
 
@@ -22,11 +18,12 @@ class EventsController < ApplicationController
   end
 
   def index
+    @events = Event.all
   end
 
   private
 
   def event_params
-    params.require(:event).permit(:day, :location)
+    params.require(:event).permit(:day, :location, :description)
   end
 end

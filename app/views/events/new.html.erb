@@ -1,12 +1,5 @@
-<%= form_with(model: @event) do |f| %>
-  <p><%= f.label :day %></p>
-  <p><%= f.date_field :day %></p>
+<h2> Create a new event </h2>
 
-  <p><%= f.label :location %></p>
-  <p><%= f.text_field :location %></p>
-
-  <p><%= f.label :description %></p>
-  <p><%= f.text_field :description %></p>
-
-  <p><%= f.submit "Create event!" %></p>
+<% if logged_in? %>
+  <%= render 'shared/event_form' %>
 <% end %>
