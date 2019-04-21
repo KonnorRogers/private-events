@@ -3,10 +3,12 @@ require 'test_helper'
 class UsersSignupTest < ActionDispatch::IntegrationTest
   test 'valid signup information' do
     get signup_path
+    assert flash.empty?
     assert_difference 'User.count', 1 do
       post signup_path, params: { user: { name: 'fakename' } }
     end
 
+    refute flash.empty?
     follow_redirect!
     assert_template 'users/show'
     assert is_logged_in?
@@ -14,6 +16,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 
   test 'invalid information' do
     get signup_path
+    assert flash.empty?
     assert_no_difference 'User.count' do
       post signup_path, params: { user: { name: 'konnor' } }
     end
