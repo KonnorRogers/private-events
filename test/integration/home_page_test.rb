@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class HomePageTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'signup & login paths appear on home page' do
+    get root_url
+
+  end
 end
