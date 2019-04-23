@@ -20,7 +20,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   test 'login with valid information followed by logout' do
     # LOGIN
     get login_path
-    post login_path, params: { name: 'konnor' }
+    post login_path, params: { name: @user.name }
 
     assert_redirected_to @user
     follow_redirect!
