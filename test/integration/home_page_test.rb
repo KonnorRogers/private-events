@@ -17,7 +17,7 @@ class HomePageTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', root_url, count: 0
   end
 
-  test 'links disappear when logged in' do
+  test 'signup and login links disappear when logged in' do
     get login_path
     post login_path, params: { name: @user.name }
 
