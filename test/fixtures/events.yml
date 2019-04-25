@@ -1,8 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+my_house:
   day: 2019-04-19
-  location: MyString
+  location: my_house
 
 two:
   day: 2019-04-19
