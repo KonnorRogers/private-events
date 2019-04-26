@@ -9,3 +9,8 @@
 
 <h2> Creator of the event: </h2>
 <p id='creator'><%= @event.creator.name %></p>
+
+<h2> Attendees: </h2>
+<% @event.attendees do |attendee| %>
+  <p> <%= attendee.name %> </p>
+<% end %>
