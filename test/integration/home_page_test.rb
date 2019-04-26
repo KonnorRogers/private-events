@@ -12,8 +12,8 @@ class HomePageTest < ActionDispatch::IntegrationTest
 
   test 'signup & login paths appear on home page' do
     get root_url
-    assert_select 'a[href=?]', login_path, count: 1
-    assert_select 'a[href=?]', signup_path, count: 1
+    assert_select 'a[href=?]', login_path, count: 2
+    assert_select 'a[href=?]', signup_path, count: 2
     assert_select 'a[href=?]', root_url, count: 1
   end
 
@@ -25,8 +25,8 @@ class HomePageTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', login_path, count: 0
     assert_select 'a[href=?]', signup_path, count: 0
 
-    assert_select 'a[href=?]', user_path(@user), count: 1
-    assert_select 'a[href=?]', logout_path, count: 1
-    assert_select 'a[href=?]', events_new_path, count: 1
+    assert_select 'a[href=?]', user_path(@user), count: 2
+    assert_select 'a[href=?]', logout_path, count: 2
+    assert_select 'a[href=?]', events_new_path, count: 2
   end
 end

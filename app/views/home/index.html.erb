@@ -1,1 +1,11 @@
 <h1> Welcome to the home page! </h1>
+
+
+<% if logged_in? %>
+  <p><%= link_to "View your profile", current_user %></p>
+  <p><%= link_to "Create an event", events_new_path %></p>
+  <p><%= link_to "Logout", logout_path, method: :delete %></p>
+<% else %>
+  <p><%= link_to "Already a user? Login here", login_path %></p>
+  <p><%= link_to "New user? Sign up here", signup_path %></p>
+<% end %>
