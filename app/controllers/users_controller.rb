@@ -20,8 +20,8 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:id])
     @created_events = @user.events.where(creator_id: @user.id)
-    # @upcoming_events = current_user.upcoming_events
-    # @previous_events = current_user.previous_events
+    @upcoming_events = current_user.events.future
+    @previous_events = current_user.events.past
   end
 
   private

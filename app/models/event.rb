@@ -9,4 +9,7 @@ class Event < ApplicationRecord
   has_many :attendances
   # this allows you to call Event.find(id).users
   has_many :attendees, through: :attendances, source: :user
+
+  scope :past, -> { where('day < ?', Time.zone.today) }
+  scope :future, -> { where('day > ?', Time.zone.today) }
 end

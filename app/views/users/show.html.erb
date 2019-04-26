@@ -11,9 +11,17 @@
   <p>Event description: <%= event.description %></p>
 <% end %>
 
-<h2> Events Attending: </h2>
+<h2> Future Events: </h2>
 
-<% @user.events do |event| %>
+<% @upcoming_events.each do |event| %>
+  <p>Event day: <%= event.day %></p>
+  <p>Event location: <%= event.location %></p>
+  <p>Event description: <%= event.description %></p>
+<% end %>
+
+<h2> Past Events: </h2>
+
+<% @previous_events.each do |event| %>
   <p>Event day: <%= event.day %></p>
   <p>Event location: <%= event.location %></p>
   <p>Event description: <%= event.description %></p>
