@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class EventCreationTest < ActionDispatch::IntegrationTest
@@ -8,10 +10,9 @@ class EventCreationTest < ActionDispatch::IntegrationTest
   test 'should require login before creation' do
     get events_new_path
     assert_response :redirect
-
     # User is not logged in yet, so redirect to login path
     follow_redirect!
-    post login_path, params: { name: @user.name }
+    login_request(@user)
     get events_new_path
     assert_response :success
 
@@ -20,7 +21,7 @@ class EventCreationTest < ActionDispatch::IntegrationTest
   end
 
   test 'creating an event' do
-    post login_path, params: { name: @user.name }
+    login_request(@user)
     get events_new_path
 
     event = { day: Time.zone.today,
@@ -34,10 +35,24 @@ class EventCreationTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     follow_redirect!
 
-    assert_select 'p#day', Time.zone.today
-    assert_select 'p#location', 'fun time at my house'
-    assert_select 'p#description', 'my house'
-    assert_select 'p#creator', @user.name
+    assert_match event[:day].to_s, response.body
+    assert_match event[:location], response.body
+    assert_match event[:description], response.body
+    assert_match @user.name, response.body
   end
 
+  test 'events index page displays all events' do
+    login_request(@user)
+
+    get events_index_path
+
+    # events defined in events/fixtures.yml
+    event1 = events(:event1)
+    event2 = events(:event2)
+    event3 = events(:event3)
+
+    assert_match event1.day.to_s, response.body
+    assert_match event2.day.to_s, response.body
+    assert_match event3.day.to_s, response.body
+  end
 end

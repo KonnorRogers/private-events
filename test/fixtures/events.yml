@@ -1,9 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-my_house:
-  day: 2019-04-19
-  location: my_house
+event1:
+  day: <%= Time.zone.today %>
+  location: location number one
+  description: 
 
-two:
-  day: 2019-04-19
-  location: MyString
+event2:
+  day: <%= Time.zone.tomorrow %>
+  location: location number two
+  description: event number two
+
+event3:
+  day: <%= Time.zone.yesterday %>
+  location: location number three
+  description: event number three
