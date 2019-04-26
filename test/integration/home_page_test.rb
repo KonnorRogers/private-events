@@ -14,7 +14,7 @@ class HomePageTest < ActionDispatch::IntegrationTest
     get root_url
     assert_select 'a[href=?]', login_path, count: 1
     assert_select 'a[href=?]', signup_path, count: 1
-    assert_select 'a[href=?]', root_url, count: 0
+    assert_select 'a[href=?]', root_url, count: 1
   end
 
   test 'signup and login links disappear when logged in' do
