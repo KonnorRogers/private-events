@@ -19,7 +19,9 @@ class UsersController < ApplicationController
     redirect_to(login_path) unless logged_in?
 
     @user = User.find(params[:id])
-    @events = @user.events.where(creator_id: @user.id)
+    @created_events = @user.events.where(creator_id: @user.id)
+    # @upcoming_events = current_user.upcoming_events
+    # @previous_events = current_user.previous_events
   end
 
   private
