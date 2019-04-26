@@ -1,0 +1,16 @@
+<h2> Day of the event: </h2>
+<p id='day'><%= @event.day %></p>
+
+<h2> Location of the event: </h2>
+<p id='location'><%= @event.location %></p>
+
+<h2> Description of the event: </h2>
+<p id='description'><%= @event.description %></p>
+
+<h2> Creator of the event: </h2>
+<p id='creator'><%= @event.creator.name %></p>
+
+<h2> Attendees: </h2>
+<% @event.attendees do |attendee| %>
+  <p> <%= attendee.name %> </p>
+<% end %>

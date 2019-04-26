@@ -1,22 +1,25 @@
 module SessionsHelper
+  # logs in the user via cookies
+  # @param user [User] logs in the given user
   def login(user)
-    cookies.signed[:user_id] = user.id
-    cookies.signed[:user_name] = user.name
+    session[:user_id] = user.id
   end
 
-  def logout(user)
-
+  # deletes the cookies
+  def logout
+    session.delete(:user_id)
+    @current_user = nil
   end
 
+  # finds the user from cookies, if its nil, will return nil
   def current_user
-    if cookies[:user_id] || cookies[:user_name]
-      User.find_by(id: cookies[:user_id]) || User.find_by(name: cookies[:user_name])
+    if session[:user_id]
+      @current_user ||= User.find_by(id: session[:user_id])
     end
   end
 
+  # checks if the user is logged in
   def logged_in?
-    return true if current_user
-
-    false
+    !current_user.nil?
   end
 end

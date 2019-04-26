@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+event1:
+  day: <%= Time.zone.today %>
+  location: location number one
+  description: 
+
+event2:
+  day: <%= Time.zone.tomorrow %>
+  location: location number two
+  description: event number two
+
+event3:
+  day: <%= Time.zone.yesterday %>
+  location: location number three
+  description: event number three
