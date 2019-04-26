@@ -42,6 +42,9 @@ class EventCreationTest < ActionDispatch::IntegrationTest
   end
 
   test 'events index page displays all events' do
+    get events_index_path
+    assert_redirected_to login_path
+
     login_request(@user)
 
     get events_index_path
